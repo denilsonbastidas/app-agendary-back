@@ -1,9 +1,8 @@
-'use strict'
 const mongoose = require('mongoose');
 const app = require('./app');
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/agendary")
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Connections Satifactory!!!");
 
@@ -12,3 +11,4 @@ mongoose.connect("mongodb://localhost/agendary")
             console.log("server success", app.get('puert'));
         });
     });
+    // mongodb+srv://denilson:<password>@cluster0.veqqu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority

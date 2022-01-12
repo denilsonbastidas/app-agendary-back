@@ -48,7 +48,7 @@ class ControllersContact{
             if(err) return res.status(500).send({message: "error en la actualizacion de contacto"});
             if(!contactEdit) return res.status(404).send({message: "no se encontro el dato a editar"});
 
-            return res.status(200).send({contactEdit})
+            return res.status(200).send({success:contactEdit})
         });
     }
 }

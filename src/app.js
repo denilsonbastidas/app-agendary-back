@@ -3,7 +3,7 @@ const express = require('express');
 let app = express();
 
 // settings 
-app.set('puert', 2200);
+app.set('puert', process.env.PORT || 2200);
 
 // Carga archivos Rutas
 const contact_Routes = require('./routes/contact');
