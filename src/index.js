@@ -1,13 +1,18 @@
 const mongoose = require('mongoose');
+const mongoClient = require('mongodb').MongoClient;
 const app = require('./app');
 
-mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/agendary")
-    .then(() => {
-        console.log("Connections Satifactory!!!");
+// 9RB7BJVazgzIBtIF
+const uri = 'mongodb://localhost/agendary';
 
-        // creacion del servidor
-        app.listen(app.get('puert'), () => {
-            console.log("server success", app.get('puert'));
-        });
-    });
+
+mongoose.Promise = global.Promise;
+mongoose.connect(uri, (err) =>{
+    if(err) throw err;
+    console.log("BD connect");
+});
+
+// creacion del servidor
+app.listen(app.get('puert'), () => {
+    console.log("server success", app.get('puert'));
+});
